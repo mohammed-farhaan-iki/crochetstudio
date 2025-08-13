@@ -6,19 +6,19 @@
 <title>Crowchet Studio</title>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Montserrat:wght@400;500&display=swap" rel="stylesheet">
 <style>
+/* --- Color Palette and Global Styles --- */
 :root {
-  /* New, richer color palette */
   --soft-yellow: #FBF8DC;
-  --faded-rose: #D8BFD8; /* A gentle, muted pink */
-  --sage-green: #C9D9C0; /* A soft, calming green */
-  --dusty-blue: #A2B9C8; /* A darker, more elegant blue */
+  --faded-rose: #D8BFD8;
+  --sage-green: #C9D9C0;
+  --dusty-blue: #A2B9C8;
   --white-shade: rgba(255, 255, 255, 0.95);
   --dark-text: #4a4a4a;
 }
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif; /* A new, clean body font */
+  font-family: 'Montserrat', sans-serif;
   background-color: var(--soft-yellow);
   color: var(--dark-text);
   line-height: 1.6;
@@ -29,23 +29,18 @@ h1, h2, h3 {
   color: var(--dark-text);
 }
 
-/* Landing Page with Hero Image */
+/* --- Landing Page with Hero Image --- */
 header {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative; /* Needed for the pseudo-element overlay */
-  
-  /* The browser can't access local drive paths like C:\... for security.
-     This path is relative to where this HTML file is located.
-     Ensure 'images/still-life-crochet-plushies.jpg' exists. */
+  position: relative;
   background-image: url('images/still-life-crochet-plushies2.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-
   text-align: center;
   animation: fadeIn 1.5s ease;
   color: var(--white-shade);
@@ -53,7 +48,6 @@ header {
   box-sizing: border-box;
 }
 
-/* Optional overlay for better text readability */
 header::before {
   content: "";
   position: absolute;
@@ -61,12 +55,10 @@ header::before {
   left: 0;
   width: 100%;
   height: 100%;
-  /* Increased the overlay opacity from 0.4 to 0.7 for better visibility */
   background-color: rgba(0, 0, 0, 0.7); 
-  z-index: 1; /* Place the overlay behind the text but on top of the image */
+  z-index: 1;
 }
 
-/* Ensure text is above the overlay */
 header h1, header p {
   position: relative;
   z-index: 2;
@@ -74,7 +66,7 @@ header h1, header p {
 }
 
 header h1 {
-  font-size: clamp(2rem, 8vw, 4rem); /* Responsive font size */
+  font-size: clamp(2rem, 8vw, 4rem);
   margin: 0;
 }
 
@@ -85,16 +77,48 @@ header p {
   font-weight: 400;
 }
 
-/* Product Grid */
+/* --- Navigation Bar Styles --- */
+.category-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 20px clamp(15px, 5vw, 50px);
+  background-color: var(--sage-green);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.nav-button {
+  background-color: var(--soft-yellow);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  color: var(--dark-text);
+  transition: all 0.3s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.nav-button:hover, .nav-button.active {
+  background-color: var(--dusty-blue);
+  color: var(--white-shade);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- Product Grid --- */
 .products {
   padding: 50px clamp(15px, 5vw, 50px);
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Slightly smaller min size for mobile */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: clamp(15px, 5vw, 30px);
 }
 
 .product {
-  background: var(--faded-rose); /* Use new color */
+  background: var(--faded-rose);
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
@@ -109,7 +133,7 @@ header p {
 
 .product img {
   width: 100%;
-  aspect-ratio: 1 / 1; /* A modern way to ensure a square aspect ratio */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
 }
 
@@ -120,7 +144,7 @@ header p {
   font-weight: 500;
 }
 
-/* Modal */
+/* --- Modal --- */
 .modal {
   display: none;
   position: fixed;
@@ -135,7 +159,7 @@ header p {
   animation: fadeIn 0.3s ease;
   padding: 20px;
   box-sizing: border-box;
-  overflow-y: auto; /* Allow scrolling on smaller screens */
+  overflow-y: auto;
 }
 
 .modal-content {
@@ -161,7 +185,7 @@ header p {
   z-index: 2;
 }
 
-/* Carousel */
+/* --- Carousel --- */
 .carousel {
   position: relative;
   overflow: hidden;
@@ -171,7 +195,7 @@ header p {
 
 .carousel img {
   width: 100%;
-  aspect-ratio: 1 / 1; /* Ensure all carousel images are square */
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-radius: 8px;
   display: none;
@@ -202,7 +226,7 @@ header p {
 .carousel-btn.left { left: 10px; }
 .carousel-btn.right { right: 10px; }
 
-/* Animations */
+/* --- Animations and Media Queries --- */
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -213,22 +237,24 @@ header p {
   to {transform: scale(1); opacity: 1;}
 }
 
-/* Media Queries for better mobile experience */
 @media (max-width: 768px) {
-    header h1 { font-size: 3rem; }
-    header p { font-size: 1.1rem; }
+  header h1 { font-size: 3rem; }
+  header p { font-size: 1.1rem; }
 }
 
 @media (max-width: 500px) {
-    .products {
-        grid-template-columns: 1fr;
-    }
-    .product img { height: 250px; }
-    .modal-content { padding: 15px; }
-    .carousel-btn {
-        padding: 6px 10px;
-        font-size: 1rem;
-    }
+  .category-nav {
+      flex-direction: column;
+  }
+  .products {
+    grid-template-columns: 1fr;
+  }
+  .product img { height: 250px; }
+  .modal-content { padding: 15px; }
+  .carousel-btn {
+    padding: 6px 10px;
+    font-size: 1rem;
+  }
 }
 </style>
 </head>
@@ -239,6 +265,14 @@ header p {
   <h1>Crowchet Studio</h1>
   <p>Handmade crochet creations crafted with love and care for you.</p>
 </header>
+
+<!-- Navigation Bar -->
+<nav class="category-nav">
+  <button class="nav-button active" onclick="filterProducts('all')">All</button>
+  <button class="nav-button" onclick="filterProducts('bouquets')">Bouquets</button>
+  <button class="nav-button" onclick="filterProducts('keychains')">Keychains & Charms</button>
+  <button class="nav-button" onclick="filterProducts('others')">Others</button>
+</nav>
 
 <!-- Product Grid -->
 <section class="products" id="productGrid"></section>
@@ -263,144 +297,198 @@ const productsData = {
   "sunflowerbouquet": {
     title: "Single Sunflower Bouquet",
     price: "300/-",
-    images: ["sunflowerbouquet1.jpg", "sunflowerbouquet2.jpg", "sunflowerbouquet3.jpg"]
+    images: ["sunflowerbouquet1.jpg", "sunflowerbouquet2.jpg", "sunflowerbouquet3.jpg"],
+    category: "bouquets"
+  },
+  "minirosebouquet": {
+    title: "Mini Rose Bouquet",
+    price: "200/-",
+    images: ["minirosebouquet1.jpg", "minirosebouquet2.jpg", "minirosebouquet3.jpg"],
+    category: "bouquets"
+  },
+  "singlerosebouquet": {
+    title: "Single Rose Bouquet",
+    price: "250/-",
+    images: ["singlerosebouquet1.jpg", "singlerosebouquet2.jpg", "singlerosebouquet3.jpg"],
+    category: "bouquets"
+  },
+  "tulipbouquet": {
+    title: "Tulip Bouquet",
+    price: "450/-",
+    images: ["tulipbouquet1.jpg", "tulipbouquet2.jpg", "tulipbouquet3.jpg"],
+    category: "bouquets"
+  },
+  "bouquetoflove": {
+    title: "Bouquet Of Love",
+    price: "680/-",
+    images: ["bouquetoflove1.jpg", "bouquetoflove2.jpg", "bouquetoflove3.jpg"],
+    category: "bouquets"
+  },
+  "blushbouquet": {
+    title: "Blush Bouquet",
+    price: "650/-",
+    images: ["blushbouquet1.jpg", "blushbouquet2.jpg", "blushbouquet3.jpg"],
+    category: "bouquets"
+  },
+  "classicrosebouquet": {
+    title: "Classic Rose Bouquet",
+    price: "1150/-",
+    images: ["classicrosebouquet1.jpg", "classicrosebouquet2.jpg", "classicrosebouquet3.jpg"],
+    category: "bouquets"
+  },
+  "paradisebouquet": {
+    title: "Paradise Bouquet",
+    price: "1400/-",
+    images: ["paradisebouquet1.jpg", "paradisebouquet2.jpg", "paradisebouquet3.jpg"],
+    category: "bouquets"
+  },
+  "crystalbouquet": {
+    title: "Crystal Bouquet",
+    price: "699/-",
+    images: ["crystalbouquet1.jpg", "crystalbouquet2.jpg", "crystalbouquet3.jpg"],
+    category: "bouquets"
+  },
+  "octopuskeychain": {
+    title: "Octopus Keychain",
+    price: "300/-",
+    images: ["octopuskeychain1.jpg", "octopuskeychain2.jpg", "octopuskeychain3.jpg"],
+    category: "keychains"
+  },
+  "daisykeychain": {
+    title: "Daisy Keychain",
+    price: "200/-",
+    images: ["daisykeychain1.jpg", "daisykeychain2.jpg", "daisykeychain3.jpg"],
+    category: "keychains"
+  },
+  "avocadokeychain": {
+    title: "Avocado Keychain",
+    price: "300/-",
+    images: ["avocadokeychain1.jpg", "avocadokeychain2.jpg", "avocadokeychain3.jpg"],
+    category: "keychains"
+  },
+  "beekeychain": {
+    title: "Bee Keychain",
+    price: "200/-",
+    images: ["beekeychain1.jpg", "beekeychain2.jpg", "beekeychain3.jpg"],
+    category: "keychains"
+  },
+  "butterflykeychain": {
+    title: "Butterfly Keychain",
+    price: "170/-",
+    images: ["butterflykeychain1.jpg", "butterflykeychain2.jpg", "butterflykeychain3.jpg"],
+    category: "keychains"
+  },
+  "bowkeychain": {
+    title: "Bow Keychain",
+    price: "260/-",
+    images: ["bowkeychain1.jpg", "bowkeychain2.jpg", "bowkeychain3.jpg"],
+    category: "keychains"
+  },
+  "watermelonphonecharm": {
+    title: "Watermelon Phone Charm",
+    price: "130/-",
+    images: ["watermelonphonecharm1.jpg", "watermelonphonecharm2.jpg", "watermelonphonecharm3.jpg"],
+    category: "charms"
+  },
+  "sunflowercharm": {
+    title: "Sunflower Charm",
+    price: "220/-",
+    images: ["sunflowercharm1.jpg", "sunflowercharm2.jpg", "sunflowercharm3.jpg"],
+    category: "charms"
+  },
+  "sunflowercoaster": {
+    title: "Sunflower Coaster",
+    price: "550/-",
+    images: ["sunflowercoaster1.jpg", "sunflowercoaster2.jpg", "sunflowercoaster3.jpg"],
+    category: "others"
+  },
+  "froggylegs": {
+    title: "Froggy Legs",
+    price: "400/-",
+    images: ["froggylegs1.jpg", "froggylegs2.jpg", "froggylegs3.jpg"],
+    category: "others"
+  },
+  "miniheartpillow": {
+    title: "Mini Heart Pillow",
+    price: "380/-",
+    images: ["miniheartpillow1.jpg", "miniheartpillow2.jpg", "miniheartpillow3.jpg"],
+    category: "others"
   },
   "babybunny": {
     title: "Baby Bunny",
     price: "600/-",
-    images: ["babybunny1.jpg", "babybunny2.jpg", "babybunny3.jpg"]
+    images: ["babybunny1.jpg", "babybunny2.jpg", "babybunny3.jpg"],
+    category: "others"
   },
   "babyshoeswithbow": {
     title: "Baby Shoes With Bow",
     description: "(0-3 months)",
     price: "500/-",
-    images: ["babyshoeswithbow1.jpg", "babyshoeswithbow2.jpg", "babyshoeswithbow3.jpg"]
-  },
-  "watermelonphonecharm": {
-    title: "Watermelon Phone Charm",
-    price: "130/-",
-    images: ["watermelonphonecharm1.jpg", "watermelonphonecharm2.jpg", "watermelonphonecharm3.jpg"]
-  },
-  "sunflowercharm": {
-    title: "Sunflower Charm",
-    price: "220/-",
-    images: ["sunflowercharm1.jpg", "sunflowercharm2.jpg", "sunflowercharm3.jpg"]
-  },
-  "octopuskeychain": {
-    title: "Octopus Keychain",
-    price: "300/-",
-    images: ["octopuskeychain1.jpg", "octopuskeychain2.jpg", "octopuskeychain3.jpg"]
-  },
-  "daisykeychain": {
-    title: "Daisy Keychain",
-    price: "200/-",
-    images: ["daisykeychain1.jpg", "daisykeychain2.jpg", "daisykeychain3.jpg"]
-  },
-  "avocadokeychain": {
-    title: "Avocado Keychain",
-    price: "300/-",
-    images: ["avocadokeychain1.jpg", "avocadokeychain2.jpg", "avocadokeychain3.jpg"]
-  },
-  "miniheartpillow": {
-    title: "Mini Heart Pillow",
-    price: "380/-",
-    images: ["miniheartpillow1.jpg", "miniheartpillow2.jpg", "miniheartpillow3.jpg"]
-  },
-  "minirosebouquet": {
-    title: "Mini Rose Bouquet",
-    price: "200/-",
-    images: ["minirosebouquet1.jpg", "minirosebouquet2.jpg", "minirosebouquet3.jpg"]
-  },
-  "beekeychain": {
-    title: "Bee Keychain",
-    price: "200/-",
-    images: ["beekeychain1.jpg", "beekeychain2.jpg", "beekeychain3.jpg"]
-  },
-  "crystalbouquet": {
-    title: "Crystal Bouquet",
-    price: "699/-",
-    images: ["crystalbouquet1.jpg", "crystalbouquet2.jpg", "crystalbouquet3.jpg"]
-  },
-  "froggylegs": {
-    title: "Froggy Legs",
-    price: "400/-",
-    images: ["froggylegs1.jpg", "froggylegs2.jpg", "froggylegs3.jpg"]
-  },
-  "paradisebouquet": {
-    title: "Paradise Bouquet",
-    price: "1400/-",
-    images: ["paradisebouquet1.jpg", "paradisebouquet2.jpg", "paradisebouquet3.jpg"]
-  },
-  "classicrosebouquet": {
-    title: "Classic Rose Bouquet",
-    price: "1150/-",
-    images: ["classicrosebouquet1.jpg", "classicrosebouquet2.jpg", "classicrosebouquet3.jpg"]
-  },
-  "butterflykeychain": {
-    title: "Butterfly Keychain",
-    price: "170/-",
-    images: ["butterflykeychain1.jpg", "butterflykeychain2.jpg", "butterflykeychain3.jpg"]
-  },
-  "blushbouquet": {
-    title: "Blush Bouquet",
-    price: "650/-",
-    images: ["blushbouquet1.jpg", "blushbouquet2.jpg", "blushbouquet3.jpg"]
-  },
-  "singlerosebouquet": {
-    title: "Single Rose Bouquet",
-    price: "250/-",
-    images: ["singlerosebouquet1.jpg", "singlerosebouquet2.jpg", "singlerosebouquet3.jpg"]
-  },
-  "tulipbouquet": {
-    title: "Tulip Bouquet",
-    price: "450/-",
-    images: ["tulipbouquet1.jpg", "tulipbouquet2.jpg", "tulipbouquet3.jpg"]
-  },
-  "bouquetoflove": {
-    title: "Bouquet Of Love",
-    price: "680/-",
-    images: ["bouquetoflove1.jpg", "bouquetoflove2.jpg", "bouquetoflove3.jpg"]
-  },
-  "bowkeychain": {
-    title: "Bow Keychain",
-    price: "260/-",
-    images: ["bowkeychain1.jpg", "bowkeychain2.jpg", "bowkeychain3.jpg"]
-  },
-  "sunflowercoaster": {
-    title: "Sunflower Coaster",
-    price: "550/-",
-    images: ["sunflowercoaster1.jpg", "sunflowercoaster2.jpg", "sunflowercoaster3.jpg"]
+    images: ["babyshoeswithbow1.jpg", "babyshoeswithbow2.jpg", "babyshoeswithbow3.jpg"],
+    category: "others"
   }
 };
 
 let currentImages = [];
 let currentIndex = 0;
-const imageBasePath = "images/"; // Base path for images
+const imageBasePath = "images/";
 
 document.addEventListener("DOMContentLoaded", () => {
+    // Initial render of all products
+    filterProducts('all');
+});
+
+function filterProducts(category) {
     const productGrid = document.getElementById("productGrid");
+    productGrid.innerHTML = ''; // Clear previous products
+
+    // Highlight the active button
+    document.querySelectorAll('.nav-button').forEach(button => {
+        button.classList.remove('active');
+        if (button.innerText.toLowerCase().includes(category)) {
+            button.classList.add('active');
+        } else if (category === 'keychains' && button.innerText.toLowerCase().includes('keychains & charms')) {
+            button.classList.add('active');
+        } else if (category === 'all' && button.innerText.toLowerCase() === 'all') {
+            button.classList.add('active');
+        }
+    });
+
     for (const key in productsData) {
         if (productsData.hasOwnProperty(key)) {
             const product = productsData[key];
-            const productDiv = document.createElement("div");
-            productDiv.classList.add("product");
-            productDiv.setAttribute("onclick", `openModal('${key}')`);
             
-            const img = document.createElement("img");
-            // Corrected file path to be relative to the HTML file
-            img.src = `${imageBasePath}${product.images[0]}`; 
-            img.alt = product.title;
-            
-            const infoDiv = document.createElement("div");
-            infoDiv.classList.add("product-info");
-            infoDiv.textContent = product.title;
-            
-            productDiv.appendChild(img);
-            productDiv.appendChild(infoDiv);
-            productGrid.appendChild(productDiv);
+            // Filter logic based on category
+            let showProduct = false;
+            if (category === 'all') {
+                showProduct = true;
+            } else if (category === 'keychains' && (product.category === 'keychains' || product.category === 'charms')) {
+                showProduct = true;
+            } else if (product.category === category) {
+                showProduct = true;
+            }
+
+            if (showProduct) {
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("product");
+                productDiv.setAttribute("onclick", `openModal('${key}')`);
+                
+                const img = document.createElement("img");
+                // Using a placeholder image for the hero, but still trying to load other images from 'images/'
+                img.src = `${imageBasePath}${product.images[0]}`; 
+                img.alt = product.title;
+                
+                const infoDiv = document.createElement("div");
+                infoDiv.classList.add("product-info");
+                infoDiv.textContent = product.title;
+                
+                productDiv.appendChild(img);
+                productDiv.appendChild(infoDiv);
+                productGrid.appendChild(productDiv);
+            }
         }
     }
-});
+}
 
 function openModal(productKey) {
   const product = productsData[productKey];
@@ -419,10 +507,9 @@ function closeModal() {
 
 function updateCarousel() {
   const carouselContainer = document.getElementById("carouselImages");
-  carouselContainer.innerHTML = ''; // Clear previous images
+  carouselContainer.innerHTML = '';
   currentImages.forEach((src, idx) => {
     const img = document.createElement("img");
-    // Corrected file path to be relative to the HTML file
     img.src = `${imageBasePath}${src}`; 
     img.alt = `Image ${idx + 1}`;
     img.classList.toggle('active', idx === currentIndex);
