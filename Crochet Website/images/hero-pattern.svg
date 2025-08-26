@@ -1,0 +1,31 @@
+<svg width="1200" height="300" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFF9E3" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#F8C8DC" stop-opacity="0.7"/>
+    </linearGradient>
+    
+    <!-- Pattern definition -->
+    <pattern id="yarn-pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <!-- Small yarn ball -->
+      <circle cx="15" cy="15" r="5" fill="#C9E4C5" opacity="0.5"/>
+      <path d="M15,10 Q18,13 15,15 Q12,17 15,20" stroke="#B5DEFF" stroke-width="1" fill="none" opacity="0.6"/>
+      
+      <!-- Small hook -->
+      <path d="M40,40 Q45,35 40,30 L38,28" stroke="#F8C8DC" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect x="0" y="0" width="1200" height="300" fill="url(#bg-gradient)"/>
+  
+  <!-- Pattern overlay -->
+  <rect x="0" y="0" width="1200" height="300" fill="url(#yarn-pattern)" opacity="0.3"/>
+  
+  <!-- Decorative elements -->
+  <circle cx="100" cy="50" r="30" fill="#F8C8DC" opacity="0.4"/>
+  <circle cx="1100" cy="250" r="40" fill="#C9E4C5" opacity="0.4"/>
+  <circle cx="200" cy="200" r="20" fill="#B5DEFF" opacity="0.4"/>
+  <circle cx="1000" cy="100" r="25" fill="#FFF9E3" opacity="0.4"/>
+</svg>
